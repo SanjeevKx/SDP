@@ -4,61 +4,55 @@ import {
   Home,
   Building,
   UserCheck,
-  Users,
   Calendar,
-  DollarSign,
   FileText,
   Settings,
   Power,
   Repeat,
+  DollarSignIcon,
 } from 'lucide-react';
 import { Button } from '../ui/button';
 
 const Leftbar = () => {
-  const AdminLinks = [
+  const UserLinks = [
     {
       title: 'Dashboard',
-      link: '/admin/dashboard',
+      link: '/user/dashboard',
       icon: Home,
     },
     {
-      title: 'Properties',
-      link: '/admin/properties',
+      title: 'Properties Available',
+      link: '/user/properties',
       icon: Building,
     },
     {
-      title: 'Clients',
-      link: '/admin/client',
-      icon: Users,
+      title: 'Sell Land',
+      link: '/user/properties',
+      icon: DollarSignIcon,
     },
     {
       title: 'Agents',
-      link: '/admin/agents',
+      link: '/user/agents',
       icon: UserCheck,
     },
     {
       title: 'Appointments',
-      link: '/admin/appointments',
+      link: '/user/appointments',
       icon: Calendar,
     },
     {
-      title: 'Pricing',
-      link: '/admin/pricing',
-      icon: DollarSign,
-    },
-    {
       title: 'Transactions',
-      link: '/admin/transactions',
+      link: '/user/transactions',
       icon: Repeat,
     },
     {
       title: 'Reports',
-      link: '/admin/reports',
+      link: '/user/reports',
       icon: FileText,
     },
     {
       title: 'Settings',
-      link: '/admin/settings',
+      link: '/user/settings',
       icon: Settings,
     },
   ];
@@ -69,7 +63,7 @@ const Leftbar = () => {
         <h1 className="text-2xl font-bold">estateEra</h1>
       </div>
       <nav className="flex flex-col flex-grow space-y-2">
-        {AdminLinks.map((data, index) => (
+        {UserLinks.map((data, index) => (
           <NavLink
             key={index}
             to={data.link}
@@ -84,7 +78,7 @@ const Leftbar = () => {
         ))}
       </nav>
       <div className='h-[5%] w-full flex flex-col justify-center items-center'>
-        <Button className='p-5  bg-blue-500/5 hover:bg-blue-500/10 font-bold  w-full'>
+        <Button className='p-5 bg-blue-500/5 hover:bg-blue-500/10 font-bold w-full'>
           <span className='flex flex-row items-center justify-start h-full w-full gap-3 text-blue-500'>
             <Power size={20} /> Logout
           </span>
