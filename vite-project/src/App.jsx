@@ -11,6 +11,7 @@ import AdminClient from './pages/Admin/AdminClient';
 import UserDashboard from './pages/User/UserDashboard';
 import UserLayout from './layout/UserLayout';
 import Agents from './pages/Admin/Agents';
+import AdminLogin from './pages/Admin/AdminLogin';
 
 const App = () => {
   return (
@@ -24,13 +25,14 @@ const App = () => {
         <Route element={<AdminLayout />}>
           <Route path='/admin/dashboard' element={<AdminDashboard />} />
           <Route path='/admin/client' element={<AdminClient />} />
-          <Route path='/admin/agents' element={<Agents/>} />
+          <Route path='/admin/agents' element={<Agents />} />
         </Route>
         <Route element={<UserLayout />}>
           <Route path='/user/dashboard' element={<UserDashboard />} />
-          <Route path='/user/agents' element={<Agents/>} />
+          <Route path='/user/agents' element={<Agents />} />
         </Route>
         <Route path='*' element={<Notfound />} />
+        <Route path='/admin/login' element={<AdminLogin />} />
       </Routes>
     </BrowserRouter>
   );

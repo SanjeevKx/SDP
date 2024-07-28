@@ -128,28 +128,28 @@ const HomePage = () => {
         <div className="w-full min-h-screen flex flex-col items-center justify-center p-8">
           <div className="bg-white rounded-lg shadow-md p-8 max-w-4xl w-full">
             <h2 className="text-3xl text-gray-500 font-bold text-center mb-4">How It works? Find a perfect home</h2>
-            <p className="text-gray-500 text-center mb-8">Learn ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p className="text-gray-500 text-center mb-8">Explore how our platform helps you find the perfect home effortlessly.</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="flex flex-col items-center">
                 <div className="bg-yellow-400 p-4 rounded-full mb-4">
                   <Home className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-gray-500 text-xl font-bold mb-2">Find Real Estate</h3>
-                <p className="text-gray-500 text-center">Sumo petentium ut per, at his wisi unum adipiscing. Est ei graeco</p>
+                <p className="text-gray-500 text-center">Browse through a variety of properties to find your dream home.</p>
               </div>
               <div className="flex flex-col items-center">
                 <div className="bg-yellow-400 p-4 rounded-full mb-4">
                   <User className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-gray-500 text-xl font-bold mb-2">Meet Realtor</h3>
-                <p className="text-gray-500 text-center">Sumo petentium ut per, at his wisi unum adipiscing. Est ei graeco</p>
+                <h3 className="text-gray-500 text-xl font-bold mb-2">Meet Agent</h3>
+                <p className="text-gray-500 text-center">Connect with experienced realtors to get personalized assistance.</p>
               </div>
               <div className="flex flex-col items-center">
                 <div className="bg-yellow-400 p-4 rounded-full mb-4">
                   <Key className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-gray-500 text-xl font-bold mb-2">Take The Keys</h3>
-                <p className="text-gray-500 text-center">Sumo petentium ut per, at his wisi unum adipiscing. Est ei graeco</p>
+                <p className="text-gray-500 text-center">Complete the process and receive the keys to your new home.</p>
               </div>
             </div>
           </div>

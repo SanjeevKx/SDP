@@ -8,14 +8,14 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Login = () => {
+const AdminLogin = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleLogin = () => {
         if (email && password) {
-            toast.success('Login successful!', {
+            toast.success('Admin Login successful!', {
                 position: "bottom-right",
                 autoClose: 2500,
                 hideProgressBar: false,
@@ -28,7 +28,7 @@ const Login = () => {
             });
 
             setTimeout(() => {
-                navigate('/user/dashboard');
+                navigate('/admin/dashboard');
             }, 4000);
         } else {
             toast.error('Please fill out the fields', {
@@ -45,12 +45,12 @@ const Login = () => {
     };
 
     return (
-        <div className='h-full w-full flex justify-center items-center'>
+        <div className='h-full min-h-screen w-full flex justify-center items-center'>
             <Card className="w-1/4">
                 <CardHeader className="space-y-1">
-                    <CardTitle className="text-2xl">Sign In Here</CardTitle>
+                    <CardTitle className="text-2xl">Sign-In as Admin</CardTitle>
                     <CardDescription>
-                        Enter your details to sign-in
+                        Enter admin credentials
                     </CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-4">
@@ -107,4 +107,4 @@ const Login = () => {
     );
 }
 
-export default Login;
+export default AdminLogin;
