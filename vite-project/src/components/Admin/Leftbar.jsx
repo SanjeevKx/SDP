@@ -11,6 +11,7 @@ import {
   Settings,
   Power,
   Repeat,
+  Trello,
 } from 'lucide-react';
 import { Button } from '../ui/button';
 
@@ -66,6 +67,7 @@ const Leftbar = () => {
   return (
     <aside className="sticky top-0 w-64 flex flex-col h-screen shadow-sm shadow-primary">
       <div className="flex items-center h-16 pl-10 mb-4">
+        <Trello className="mr-2 w-6 h-6 text-orange-500" /> {/* Added Trello icon */}
         <h1 className="text-2xl font-bold">estateEra</h1>
       </div>
       <nav className="flex flex-col flex-grow space-y-2">

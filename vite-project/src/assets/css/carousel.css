@@ -1,48 +1,48 @@
-body {
-  margin: 0;
-}
-
 #carousel {
-  perspective: 1000px;
+  perspective: 1200px;
+  padding-top: 12%;
+  font-size: 0;
+  margin-bottom: 3rem;
   overflow: hidden;
-  height: 105vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-#scene {
-  width: 80%;
-  height: 70vh;
+figure#spinner {
   transform-style: preserve-3d;
-  transition: transform 0.5s;
-}
-
-.carousel_item {
-  position: absolute;
+  height: 480px; /* Increased height */
   width: 100%;
+  position: relative;
+  margin: 0;
+  transform-origin: 50% 50% -500px;
+  transition: 1s;
+}
+
+figure#spinner img {
+  width: 50%;
   height: 100%;
-  left: 0;
+  position: absolute;
   top: 0;
-  transition: all 0.5s ease;
-  backface-visibility: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  left: 25%;
+  transform-origin: 50% 50% -550px;
+  outline: 1px solid transparent;
+  opacity: 0;
+  transition: opacity 1s, transform 1s;
 }
 
-.carousel_item img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+figure#spinner img.current {
+  opacity: 1;
+  transform: rotateY(0deg) translateZ(500px);
 }
 
-.carousel_item:nth-child(1) {
-  transform: rotateY(0) translateZ(50vh);
+figure#spinner img.next {
+  opacity: 0.5;
+  transform: rotateY(-45deg) translateZ(450px);
 }
 
-.carousel_item:not(:nth-child(1)) {
-  transform: rotateY(0) translateZ(40vh) scale(0.8);
+figure#spinner img.prev {
+  opacity: 0.5;
+  transform: rotateY(45deg) translateZ(450px);
+}
+
+figure#spinner img.hidden {
+  opacity: 0.15;
 }

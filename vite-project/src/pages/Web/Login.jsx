@@ -7,6 +7,7 @@ import { Github } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "@/assets/css/blink.css";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -46,7 +47,7 @@ const Login = () => {
 
     return (
         <div className='h-full w-full flex justify-center items-center'>
-            <Card className="w-1/4">
+            <Card className="w-1/4 blinking-border"> {/* Apply the new class here */}
                 <CardHeader className="space-y-1">
                     <CardTitle className="text-2xl">Sign In Here</CardTitle>
                     <CardDescription>

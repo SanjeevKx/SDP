@@ -1,40 +1,53 @@
 import React from 'react';
 import { ModeToggle } from '../mode-toggle';
 import { NavLink } from 'react-router-dom';
+import { Home, LogIn, UserPlus, Building, UserCheck, FactoryIcon, Trello } from 'lucide-react'; // Importing icons from Lucide React
 
 const Navbar = () => {
     const LinksData = [
         {
             title: 'Home',
-            link: '/'
+            link: '/',
+            icon: <Home className="mr-2 w-4 h-4" /> // Increased margin-right
         },
         {
             title: 'Login',
-            link: '/login'
+            link: '/login',
+            icon: <LogIn className="mr-2 w-4 h-4" /> // Increased margin-right
         },
         {
             title: 'Register',
-            link: '/register'
-        }
+            link: '/register',
+            icon: <UserPlus className="mr-2 w-4 h-4" /> // Increased margin-right
+        },
+        {
+            title: 'Properties',
+            link: '/user/properties',
+            icon: <Building className="mr-2 w-4 h-4" /> // Increased margin-right
+        },
+        {
+            title: 'Agents',
+            link: '/user/agents',
+            icon: <UserCheck className="mr-2 w-4 h-4" /> // Increased margin-right
+        },
     ];
 
     return (
         <nav className='w-full h-16 flex flex-row justify-between items-center border-b-2 border-primary px-4 fixed top-0 left-0 bg-background z-10'>
             <div className='flex items-center h-full'>
-                <img 
-                    src='https://ik.imagekit.io/rqds6dyata/Blue_Illustrative_Luxury_Real_Estate_Logo__1_-removebg-preview.png?updatedAt=1721985611931' 
-                    alt='Logo' 
-                    className='h-20 w-16 object-contain'
-                />
-                <span className='text-black text-2xl font-bold'>
+                <span className='text-2xl font-bold flex items-center'>
+                    <Trello className="mr-2 w-6 h-6 text-orange-500" /> 
                     estateEra
                 </span>
             </div>
-            <ul className='flex flex-row items-center font-bold text-xl gap-10'>
+            <ul className='flex flex-row items-center font-medium text-sm gap-4'>
                 {LinksData.map((data, index) => (
                     <li key={index} className='list-none'>
-                        <NavLink to={data.link} className={({ isActive }) => isActive ? "text-primary" : ""}>
-                            {data.title}
+                        <NavLink
+                            to={data.link}
+                            className={({ isActive }) => isActive ? "text-primary flex items-center" : "flex items-center"}
+                        >
+                            {data.icon} {data.title}
                         </NavLink>
                     </li>
                 ))}

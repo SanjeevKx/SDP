@@ -7,6 +7,8 @@ import { Github } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "@/assets/css/blink.css";
+
 
 const AdminLogin = () => {
     const navigate = useNavigate();
@@ -46,7 +48,7 @@ const AdminLogin = () => {
 
     return (
         <div className='h-full min-h-screen w-full flex justify-center items-center'>
-            <Card className="w-1/4">
+            <Card className="w-1/4 blinking-border">
                 <CardHeader className="space-y-1">
                     <CardTitle className="text-2xl">Sign-In as Admin</CardTitle>
                     <CardDescription>
