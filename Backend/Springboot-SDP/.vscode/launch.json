@@ -1,0 +1,61 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "RealEstateApplication",
+            "request": "launch",
+            "mainClass": "com.example.realestate.RealEstateApplication",
+            "projectName": "usecase"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-RealEstateApplication<usecase>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.realestate.RealEstateApplication",
+            "projectName": "usecase",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-RealEstateApplication<usecase>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.realestate.RealEstateApplication",
+            "projectName": "usecase",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-RealEstateApplication<usecase>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.realestate.RealEstateApplication",
+            "projectName": "usecase",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-RealEstateApplication<usecase>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.realestate.RealEstateApplication",
+            "projectName": "usecase",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-QuizspringApplication<usecase>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.realestate.QuizspringApplication",
+            "projectName": "usecase",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
