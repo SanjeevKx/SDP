@@ -18,7 +18,7 @@ public class Agent {
     private String location;
     private String phoneNumber;
 
-    // Getters and Setters
+
     public String getId() {
         return id;
     }
