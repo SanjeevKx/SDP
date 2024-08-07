@@ -25,7 +25,7 @@ public class PropertyController {
     public ResponseEntity<?> getPropertyById(@PathVariable Long id) {
         Optional<Property> property = propertyService.getPropertyById(id);
         if (property.isPresent()) {
-            return ResponseEntity.ok("Property found: " + property.get());
+            return ResponseEntity.ok(property.get());
         } else {
             return ResponseEntity.status(404).body("Property not found with id: " + id);
         }
@@ -62,5 +62,14 @@ public class PropertyController {
         } else {
             return ResponseEntity.status(404).body("Property not found with id: " + id);
         }
+    }
+
+    @GetMapping("/search/{location}")
+    public ResponseEntity<?> getPropertiesByLocation(@PathVariable String location) {
+        List<Property> properties = propertyService.getPropertiesByLocation(location);
+        if (properties.isEmpty()) {
+            return ResponseEntity.status(404).body("No properties found in location: " + location);
+        }
+        return ResponseEntity.ok(properties);
     }
 }
