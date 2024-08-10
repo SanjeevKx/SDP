@@ -44,7 +44,7 @@ public class AuthServiceImpl implements AuthService {
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .phone(registerRequest.getPhone())
                 .address(registerRequest.getAddress())
-                .role(User.Role.USER) // Ensure this matches the User.Role type
+                .role(User.Role.USER) 
                 .build();
         userRepository.save(user);
         return "User registered successfully.";
@@ -89,10 +89,10 @@ public class AuthServiceImpl implements AuthService {
         var user = User.builder()
                 .name("Admin")
                 .email("admin@gmail.com")
-                .password(passwordEncoder.encode("1811321"))
+                .password(passwordEncoder.encode("admin"))
                 .phone("1234567890")
                 .address("xyz")
-                .role(User.Role.ADMIN) // Ensure this matches the User.Role type
+                .role(User.Role.ADMIN) 
                 .build();
         userRepository.save(user);
         return "Admin registered successfully.";

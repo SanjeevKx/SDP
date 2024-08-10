@@ -10,7 +10,7 @@ const AdminLayout = () => {
   const [username, setUsername] = useState(null);
 
   const checkAuth = async () => {
-    if (!authService.isLoggedIn() || authService.getUserRole() !== 'Admin') {
+    if (!authService.isLoggedIn() || authService.getUserRole() !== 'ADMIN') {
       Navigate('/login');
     } else {
       const data = await User.getUsername();

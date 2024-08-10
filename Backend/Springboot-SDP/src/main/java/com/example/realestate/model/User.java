@@ -41,7 +41,8 @@ public class User implements UserDetails {
     private Role role;
 
     public enum Role {
-        USER, ADMIN
+        USER,
+        ADMIN
     }
 
     @OneToMany(mappedBy = "user")
@@ -54,7 +55,6 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        // NOTE : return username, if you are using username for login instead of email
         return email;
     }
 

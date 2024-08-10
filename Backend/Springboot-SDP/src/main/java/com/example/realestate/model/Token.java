@@ -26,21 +26,25 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "estate_token")
 public class Token {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.UUID)  // Use UUID generation strategy for unique token IDs
     private String id;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)  // Ensure the token value is unique and not null
     private String token;
 
-    @Builder.Default
     @Enumerated(EnumType.STRING)
-    private TokenType tokenType = TokenType.BEARER;
+    @Builder.Default
+    private TokenType tokenType = TokenType.BEARER;  // Default token type is BEARER
+
     private boolean revoked;
+
     private boolean expired;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_uid")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)  // Token is linked to the User model
+    @JoinColumn(name = "user_uid", nullable = false)
     private User user;
 
+   
 }

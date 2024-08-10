@@ -12,7 +12,7 @@ const UserLayout = () => {
 
   useEffect(() => {
     const checkAuth = async () => {
-      if (!authService.isLoggedIn() || authService.getUserRole() !== 'User') {
+      if (!authService.isLoggedIn() || authService.getUserRole() !== 'USER') {
         navigate('/login');
       } else {
         const usernameData = await User.getUsername();
