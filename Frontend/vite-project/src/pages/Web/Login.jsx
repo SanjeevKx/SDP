@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -8,34 +8,67 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "@/assets/css/blink.css";
+import { authService } from '@/services/auth';
 
 const Login = () => {
     const navigate = useNavigate();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [activeTab, setActiveTab] = useState('user'); // State for active tab
+    const emailRef = useRef(null);
+    const passwordRef = useRef(null);
 
-    const handleLogin = () => {
-        if (email && password) {
-            toast.success('Login successful!', {
-                position: "bottom-right",
-                autoClose: 2500,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-                className: 'text-green-500'
-            });
-
-            setTimeout(() => {
-                if (activeTab === 'user') {
+    const checkRedirect = async () => {
+        if (authService.getToken() !== null && authService.isLoggedIn()) {
+            const userRole = authService.getUserRole();
+            if (userRole !== null) {
+                if (userRole === "ADMIN") {
+                    navigate('/admin/dashboard');
+                } else if (userRole === "USER") {
                     navigate('/user/dashboard');
                 } else {
-                    navigate('/admin/dashboard');
+                    toast.error("Something went wrong");
                 }
-            }, 4000);
+            }
+        }
+    };
+
+    useEffect(() => {
+        checkRedirect();
+    }, []);
+
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+
+        if (email && password) {
+            try {
+                const res = await authService.SignIn(email, password);
+                if (res.status === 200) {
+                    authService.setToken(res.data.accessToken);
+                    toast.success("Welcome", {
+                        position: "bottom-right",
+                        autoClose: 3000,
+                        theme: "colored",
+                        className: 'text-green-500'
+                    });
+
+                    setTimeout(() => {
+                        checkRedirect();
+                    }, 3000);
+                } else {
+                    toast.error('Invalid login or no user found', {
+                        position: "bottom-right",
+                        autoClose: 2500,
+                        theme: "colored"
+                    });
+                }
+            } catch (error) {
+                toast.error('Login failed. Please try again.', {
+                    position: "bottom-right",
+                    autoClose: 2500,
+                    theme: "colored"
+                });
+            }
         } else {
             toast.error('Please fill out the fields', {
                 position: "bottom-right",
@@ -51,30 +84,16 @@ const Login = () => {
     };
 
     return (
-        <div className='h-full w-full flex justify-center items-center mt-8'> {/* Added mt-8 for margin */}
-            <Card className="w-1/4 blinking-border">
+        <div className='h-full w-full flex justify-center items-center mt-8'>
+            <Card className="w-1/4 h-auto blinking-border">
                 <CardHeader className="space-y-1">
                     <CardTitle className="text-2xl">Sign In Here</CardTitle>
                     <CardDescription>
                         Enter your details to sign-in
                     </CardDescription>
                 </CardHeader>
-                <div className="flex justify-center mb-4">
-                    <button 
-                        className={`px-4 py-2 ${activeTab === 'user' ? 'border-b-2 border-blue-500' : ''}`}
-                        onClick={() => setActiveTab('user')}
-                    >
-                        User
-                    </button>
-                    <button 
-                        className={`px-4 py-2 ${activeTab === 'admin' ? 'border-b-2 border-blue-500' : ''}`}
-                        onClick={() => setActiveTab('admin')}
-                    >
-                        Admin
-                    </button>
-                </div>
                 <CardContent className="grid gap-4">
-                    <div className="flex justify-center gap-2">
+                    <div className="flex justify-center mb-4">
                         <Button variant="outline" className="flex items-center w-1/2">
                             <Github className="mr-2" /> GitHub
                         </Button>
@@ -94,13 +113,13 @@ const Login = () => {
                         </div>
                     </div>
                     <div className="grid gap-2">
-                        <Label htmlFor="email">{activeTab === 'user' ? 'User Email' : 'Admin Email'}</Label>
+                        <Label htmlFor="email">Email</Label>
                         <Input
                             id="email"
                             type="email"
-                            placeholder={`Enter your ${activeTab === 'user' ? 'user' : 'admin'} email`}
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Enter your email"
+                            ref={emailRef}
+                            className="h-8"
                         />
                     </div>
                     <div className="grid gap-2">
@@ -109,8 +128,8 @@ const Login = () => {
                             id="password"
                             type="password"
                             placeholder="Enter your password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            ref={passwordRef}
+                            className="h-8"
                         />
                     </div>
                     <div className="text-center">
@@ -125,6 +144,6 @@ const Login = () => {
             <ToastContainer />
         </div>
     );
-}
+};
 
 export default Login;
