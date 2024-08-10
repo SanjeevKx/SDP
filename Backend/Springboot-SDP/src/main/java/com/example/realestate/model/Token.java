@@ -1,8 +1,12 @@
 package com.example.realestate.model;
 
+import com.example.realestate.enums.TokenType;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,13 +33,14 @@ public class Token {
     @Column(unique = true)
     private String token;
 
-
+    @Builder.Default
+    @Enumerated(EnumType.STRING)
+    private TokenType tokenType = TokenType.BEARER;
     private boolean revoked;
     private boolean expired;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_uid")
     private User user;
-
 
 }

@@ -6,4 +6,5 @@ import com.example.realestate.model.User;
 
 public interface UserRepo extends JpaRepository<User, Long> {
     Optional<User> findByEmail(String email);
+    // User findByUid(Long uid);
 }

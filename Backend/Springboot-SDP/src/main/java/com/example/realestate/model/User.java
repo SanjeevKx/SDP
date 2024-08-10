@@ -41,7 +41,7 @@ public class User implements UserDetails {
     private Role role;
 
     public enum Role {
-        STUDENT, ADMIN, INSTRUCTOR
+        USER, ADMIN
     }
 
     @OneToMany(mappedBy = "user")
