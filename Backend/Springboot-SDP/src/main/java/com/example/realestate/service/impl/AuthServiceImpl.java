@@ -81,15 +81,15 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public String createAdmin() {
-        Optional<User> userExist = userRepository.findByEmail("admin@gmail.com");
+        Optional<User> userExist = userRepository.findByEmail("admins@gmail.com");
         if (userExist.isPresent()) {
             return "User already exists with email id - admin@gmail.com";
         }
 
         var user = User.builder()
                 .name("Admin")
-                .email("admin@gmail.com")
-                .password(passwordEncoder.encode("admin"))
+                .email("admins@gmail.com")
+                .password(passwordEncoder.encode("admins"))
                 .phone("1234567890")
                 .address("xyz")
                 .role(User.Role.ADMIN) 
