@@ -34,6 +34,12 @@ const Login = () => {
         checkRedirect();
     }, []);
 
+    useEffect(() => {
+        document.body.style.overflow = 'hidden';
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, []);
 
     const handleLogin = async (e) => {
         e.preventDefault();
