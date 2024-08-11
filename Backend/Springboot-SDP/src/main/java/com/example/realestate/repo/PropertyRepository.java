@@ -7,5 +7,5 @@ import java.util.List;
 
 @Repository
 public interface PropertyRepository extends JpaRepository<Property, Long> {
-    List<Property> findByLocation(String location);  // Add this method
+    List<Property> findByLocation(String location);  // Existing method
 }

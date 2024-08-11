@@ -1,6 +1,7 @@
 package com.example.realestate.model;
 
 import com.example.realestate.enums.TokenType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -44,7 +45,6 @@ public class Token {
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)  // Token is linked to the User model
     @JoinColumn(name = "user_uid", nullable = false)
+    @JsonBackReference  // This is the child side of the relationship
     private User user;
-
-   
 }

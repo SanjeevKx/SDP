@@ -14,7 +14,8 @@ public interface UserService {
 
     User createUser(UserCreateRequest registerRequest);
 
-    User updateUser(Long userId);
+
+    User updateUser(Long userId, UserUpdateRequest userUpdateRequest);
 
     public void deleteUser(Long userId);
 
@@ -24,6 +25,5 @@ public interface UserService {
 
     UserResponse getUserByEmail(String email);
 
-    User updateUser(Long userId, UserUpdateRequest userUpdateRequest);
 
 }

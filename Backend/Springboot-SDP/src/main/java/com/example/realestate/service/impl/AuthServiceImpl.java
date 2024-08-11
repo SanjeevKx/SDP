@@ -18,6 +18,7 @@ import com.example.realestate.repo.JwtRepo;
 import com.example.realestate.repo.UserRepo;
 import com.example.realestate.service.AuthService;
 import com.example.realestate.config.JwtToken;
+import com.example.realestate.enums.Role;
 
 import lombok.RequiredArgsConstructor;
 
@@ -44,7 +45,7 @@ public class AuthServiceImpl implements AuthService {
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .phone(registerRequest.getPhone())
                 .address(registerRequest.getAddress())
-                .role(User.Role.USER) 
+                .role(Role.User) 
                 .build();
         userRepository.save(user);
         return "User registered successfully.";
@@ -81,18 +82,18 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public String createAdmin() {
-        Optional<User> userExist = userRepository.findByEmail("admins@gmail.com");
+        Optional<User> userExist = userRepository.findByEmail("admin@gmail.com");
         if (userExist.isPresent()) {
             return "User already exists with email id - admin@gmail.com";
         }
 
         var user = User.builder()
                 .name("Admin")
-                .email("admins@gmail.com")
-                .password(passwordEncoder.encode("admins"))
+                .email("admin@gmail.com")
+                .password(passwordEncoder.encode("admin"))
                 .phone("1234567890")
                 .address("xyz")
-                .role(User.Role.ADMIN) 
+                .role(Role.Admin) 
                 .build();
         userRepository.save(user);
         return "Admin registered successfully.";

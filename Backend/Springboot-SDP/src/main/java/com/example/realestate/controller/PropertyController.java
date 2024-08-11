@@ -5,12 +5,12 @@ import com.example.realestate.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/properties")
+@CrossOrigin(origins = "http://localhost:8080")
 public class PropertyController {
 
     @Autowired
@@ -32,26 +32,24 @@ public class PropertyController {
     }
 
     @PostMapping("/add")
-    public Property createProperty(@RequestBody Property property) {
-        return propertyService.saveProperty(property);
+    public ResponseEntity<Property> createProperty(
+            @RequestParam("location") String location,
+            @RequestParam("ownerName") String ownerName,
+            @RequestParam("contact") String contact,
+            @RequestParam("price") String price,
+            @RequestParam("squareFt") Long squareFt) {
+
+        Property newProperty = new Property();
+        newProperty.setLocation(location);
+        newProperty.setOwnerName(ownerName);
+        newProperty.setContact(contact);
+        newProperty.setPrice(price);
+        newProperty.setSquareFt(squareFt);
+
+        Property savedProperty = propertyService.saveProperty(newProperty);
+        return ResponseEntity.ok(savedProperty);
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateProperty(@PathVariable Long id, @RequestBody Property propertyDetails) {
-        Optional<Property> property = propertyService.getPropertyById(id);
-        if (property.isPresent()) {
-            Property existingProperty = property.get();
-            existingProperty.setLocation(propertyDetails.getLocation());
-            existingProperty.setOwnerName(propertyDetails.getOwnerName());
-            existingProperty.setContact(propertyDetails.getContact());
-            existingProperty.setPrice(propertyDetails.getPrice());
-            existingProperty.setSquareFt(propertyDetails.getSquareFt());
-            propertyService.saveProperty(existingProperty);
-            return ResponseEntity.ok("Property updated successfully.");
-        } else {
-            return ResponseEntity.status(404).body("Property not found with id: " + id);
-        }
-    }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteProperty(@PathVariable Long id) {
@@ -72,4 +70,5 @@ public class PropertyController {
         }
         return ResponseEntity.ok(properties);
     }
+
 }

@@ -1,7 +1,6 @@
 package com.example.realestate.auth;
 
 import com.example.realestate.enums.Role;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

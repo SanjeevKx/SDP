@@ -18,6 +18,9 @@ public class Property {
     private String price;
     private Long squareFt;
 
+
+    // Getters and Setters
+
     public Long getId() {
         return id;
     }
@@ -65,4 +68,5 @@ public class Property {
     public void setSquareFt(Long squareFt) {
         this.squareFt = squareFt;
     }
+
 }
