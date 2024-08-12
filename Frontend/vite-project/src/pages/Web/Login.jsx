@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,36 +9,29 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "@/assets/css/blink.css";
-import { authService } from '@/services/api';
-import {jwtDecode} from 'jwt-decode'; // Corrected import statement
+import { authService } from '@/services/auth';
 
 const Login = () => {
     const navigate = useNavigate();
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
 
-    const checkRedirect = async (decodedToken) => {
-        const userRole = decodedToken.role;
-
-        if (userRole === "ADMIN") {
-            navigate('/admin/dashboard');
-        } else if (userRole === "USER") {
-            navigate('/user/dashboard');
-        } else {
-            toast.error("Something went wrong");
-        }
-    };
-
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        if (token) {
-            try {
-                const decodedToken = jwtDecode(token);
-                checkRedirect(decodedToken);
-            } catch (error) {
-                localStorage.removeItem("token");
+    const checkRedirect = async () => {
+        if (authService.getToken() !== null && authService.isLoggedIn()) {
+            const userRole = authService.getUserRole();
+            if (userRole !== null) {
+                if (userRole === "ADMIN") {
+                    navigate('/admin/dashboard');
+                } else if (userRole === "USER") {
+                    navigate('/user/dashboard');
+                } else {
+                    toast.error("Something went wrong");
+                }
             }
         }
+    };
+    useEffect(() => {
+        checkRedirect();
         document.body.style.overflow = 'hidden';
 
         return () => {
@@ -52,9 +46,9 @@ const Login = () => {
 
         if (email && password) {
             try {
-                const res = await authService.login(email, password);
-                if (res) {
-                    localStorage.setItem("token", res.accessToken);
+                const res = await authService.SignIn(email, password);
+                if (res.status === 200) {
+                    authService.setToken(res.data.accessToken);
                     toast.success("Welcome", {
                         position: "bottom-right",
                         autoClose: 3000,
@@ -62,9 +56,8 @@ const Login = () => {
                         className: 'text-green-500'
                     });
 
-                    const decodedToken = jwtDecode(res.accessToken);
                     setTimeout(() => {
-                        checkRedirect(decodedToken);
+                        checkRedirect();
                     }, 3000);
                 } else {
                     toast.error('Invalid login or no user found', {

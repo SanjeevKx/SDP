@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import {
     Home,
     Building,
@@ -13,11 +13,8 @@ import {
     Trello,
 } from 'lucide-react';
 import { Button } from '../ui/button';
-import { authService } from '@/services/api';
 
 const Leftbar = () => {
-    const navigate = useNavigate();
-
     const UserLinks = [
         {
             title: 'Dashboard',
@@ -61,24 +58,10 @@ const Leftbar = () => {
         },
     ];
 
-    const handleLogout = async () => {
-        try {
-            // await authService.SignOut();
-            // Clear any local storage or session storage if needed
-            localStorage.clear();
-            // localStorage.removeItem('userData');
-            // Redirect to login page
-            navigate('/login');
-        } catch (error) {
-            console.error('Logout failed:', error);
-            // Optionally show an error message
-        }
-    };
-
     return (
         <aside className="sticky top-0 w-64 flex flex-col h-screen shadow-sm shadow-primary">
             <div className="flex items-center h-16 pl-10 mb-4">
-                <Trello className="mr-2 w-6 h-6 text-orange-500" />
+                <Trello className="mr-2 w-6 h-6 text-orange-500" /> {/* Added Trello icon */}
                 <h1 className="text-2xl font-bold">estateEra</h1>
             </div>
             <nav className="flex flex-col flex-grow space-y-2">
@@ -98,7 +81,7 @@ const Leftbar = () => {
             </nav>
             <div className='h-[5%] w-full flex flex-col justify-center items-center'>
                 <Button className='p-5 bg-blue-500/5 hover:bg-blue-500/10 font-bold w-full'>
-                    <span className='flex flex-row items-center justify-start h-full w-full gap-3 text-blue-500' onClick={handleLogout}>
+                    <span className='flex flex-row items-center justify-start h-full w-full gap-3 text-blue-500'>
                         <Power size={20} /> Logout
                     </span>
                 </Button>

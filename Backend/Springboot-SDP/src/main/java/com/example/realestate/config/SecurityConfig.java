@@ -4,12 +4,12 @@ import java.util.Arrays;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
@@ -36,13 +36,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-        private final UserDetailsService userDetailsService;
+        private final AuthenticationProvider authenticationProvider;
         private final JwtAuthenticationFilter jwtAuthenticationFilter;
         private final LogoutHandler logoutHandler;
 
         private static final String[] PublicEndPoints = {
                         "/api/auth/**",
-                        "/api/web/sites",
+                        "/api/web/site",
                         "/swagger-ui/**",
                         "/swagger-ui.html/**",
                         "/api/admin/default",
@@ -58,7 +58,7 @@ public class SecurityConfig {
                                                 authorize -> authorize.requestMatchers(PublicEndPoints).permitAll()
                                                                 .anyRequest().authenticated())
                                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
-                                .userDetailsService(userDetailsService)
+                                .authenticationProvider(authenticationProvider)
                                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                                 .logout(logout -> logout.logoutUrl("/api/auth/logout")
                                                 .addLogoutHandler(logoutHandler)
@@ -73,6 +73,7 @@ public class SecurityConfig {
                 CorsConfiguration corsConfiguration = new CorsConfiguration();
                 // Note : Replace with server url/ip in production
                 corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:5173"));
+                // corsConfiguration.setAllowedOrigins(Arrays.asList("http://65.1.244.186"));
                 corsConfiguration.setAllowedHeaders(Arrays.asList(AUTHORIZATION, CONTENT_TYPE));
                 corsConfiguration.setAllowedMethods(Arrays.asList(GET.name(), POST.name(), PUT.name(), PATCH.name(),
                                 DELETE.name(), HEAD.name(), OPTIONS.name()));

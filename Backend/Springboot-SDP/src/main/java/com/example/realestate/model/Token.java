@@ -19,13 +19,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "estate_token")
+@Table(name = "qz_token")
 public class Token {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

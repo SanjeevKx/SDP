@@ -1,7 +1,6 @@
 package com.example.realestate.service.impl;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -10,15 +9,16 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.realestate.auth.LoginRequest;
-import com.example.realestate.auth.RegisterRequest;
-import com.example.realestate.auth.LoginResponse;
+import com.example.realestate.dto.request.LoginRequest;
+import com.example.realestate.dto.request.RegisterRequest;
+import com.example.realestate.dto.response.LoginResponse;
+import com.example.realestate.enums.Role;
 import com.example.realestate.model.Token;
 import com.example.realestate.model.User;
 import com.example.realestate.repo.JwtRepo;
 import com.example.realestate.repo.UserRepo;
 import com.example.realestate.service.AuthService;
-import com.example.realestate.config.JwtToken;
+import com.example.realestate.utils.JwtToken;
 
 import lombok.RequiredArgsConstructor;
 
@@ -45,7 +45,7 @@ public class AuthServiceImpl implements AuthService {
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .phone(registerRequest.getPhone())
                 .address(registerRequest.getAddress())
-                .role(User.Role.USER) // Assuming the role is USER by default
+                .role(Role.User)
                 .build();
         userRepository.save(user);
         return "User registered successfully.";
@@ -82,46 +82,20 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public String createAdmin() {
-        Optional<User> userExist = userRepository.findByEmail("aaa@gmail.com");
+        Optional<User> userExist = userRepository.findByEmail("admin@gmail.com");
         if (userExist.isPresent()) {
-            return "Admin already exists";
+            return "User already exists with email id - admin@gmail.com";
         }
 
         var user = User.builder()
                 .name("Admin")
-                .email("aaa@gmail.com")
-                .password(passwordEncoder.encode("aaa"))
+                .email("admin@gmail.com")
+                .password(passwordEncoder.encode("1811321"))
                 .phone("1234567890")
                 .address("xyz")
-                .role(User.Role.ADMIN) 
+                .role(Role.Admin)
                 .build();
         userRepository.save(user);
         return "Admin registered successfully.";
-    }
-
-    @Override
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
-
-    @Override
-    public Optional<User> getUserByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
-
-    @Override
-    public Optional<User> updateUserByEmail(String email, User updatedUser) {
-        Optional<User> existingUser = userRepository.findByEmail(email);
-    
-        if (existingUser.isPresent()) {
-            User user = existingUser.get();
-            user.setName(updatedUser.getName());
-            user.setAddress(updatedUser.getAddress());
-            user.setPhone(updatedUser.getPhone());
-            userRepository.save(user);
-            return Optional.of(user);
-        }
-    
-        return Optional.empty();
     }
 }

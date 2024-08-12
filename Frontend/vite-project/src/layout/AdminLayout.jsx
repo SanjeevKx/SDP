@@ -6,21 +6,21 @@ import {User} from '@/services/user';
 import { authService } from '@/services/auth'; // Ensure this is correctly imported as well
 
 const AdminLayout = () => {
-  // const Navigate = useNavigate();
-  // const [username, setUsername] = useState(null);
+  const Navigate = useNavigate();
+  const [username, setUsername] = useState(null);
 
-  // const checkAuth = async () => {
-  //   if (!authService.isLoggedIn() || authService.getUserRole() !== 'ADMIN') {
-  //     Navigate('/login');
-  //   } else {
-  //     const data = await User.getUsername();
-  //     setUsername(data);
-  //   }
-  // };
+  const checkAuth = async () => {
+    if (!authService.isLoggedIn() || authService.getUserRole() !== 'ADMIN') {
+      Navigate('/login');
+    } else {
+      const data = await User.getUsername();
+      setUsername(data);
+    }
+  };
 
-  // useEffect(() => {
-  //   checkAuth();
-  // }, [Navigate]);
+  useEffect(() => {
+    checkAuth();
+  }, [Navigate]);
 
   return (
     <div className='h-screen w-screen overflow-x-hidden m-0 p-0 flex flex-row overflow-y-auto'>

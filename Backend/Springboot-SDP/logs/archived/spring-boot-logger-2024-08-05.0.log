@@ -4,8 +4,8 @@
 2024-08-05 18:30:42,227 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
 2024-08-05 18:30:43,968 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2024-08-05 18:30:44,065 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 85 ms. Found 2 JPA repository interfaces.
-2024-08-05 18:30:45,580 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 7777 (http)
-2024-08-05 18:30:45,595 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-7777"]
+2024-08-05 18:30:45,580 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-08-05 18:30:45,595 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
 2024-08-05 18:30:45,600 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
 2024-08-05 18:30:45,601 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.26]
 2024-08-05 18:30:45,699 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
@@ -359,8 +359,8 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 2024-08-05 18:34:35,704 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
 2024-08-05 18:34:38,616 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2024-08-05 18:34:38,770 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 136 ms. Found 2 JPA repository interfaces.
-2024-08-05 18:34:40,882 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 7777 (http)
-2024-08-05 18:34:40,908 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-7777"]
+2024-08-05 18:34:40,882 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-08-05 18:34:40,908 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
 2024-08-05 18:34:40,914 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
 2024-08-05 18:34:40,915 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.26]
 2024-08-05 18:34:41,207 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
@@ -379,8 +379,8 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 2024-08-05 18:34:46,608 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 2024-08-05 18:34:47,486 DEBUG o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
 2024-08-05 18:34:48,255 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2024-08-05 18:34:48,289 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-7777"]
-2024-08-05 18:34:48,348 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 7777 (http) with context path '/'
+2024-08-05 18:34:48,289 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-08-05 18:34:48,348 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path '/'
 2024-08-05 18:34:48,382 INFO o.s.b.StartupInfoLogger [restartedMain] Started RealEstateApplication in 14.357 seconds (process running for 15.209)
 2024-08-05 19:10:56,678 INFO o.s.b.StartupInfoLogger [restartedMain] Starting RealEstateApplication using Java 17.0.10 with PID 12516 (C:\Users\sanje\Downloads\Springboot-SDP\target\classes started by Sanjeev Kl in C:\Users\sanje\Downloads\Springboot-SDP)
 2024-08-05 19:10:56,683 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
@@ -388,8 +388,8 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 2024-08-05 19:10:56,826 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
 2024-08-05 19:10:59,161 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2024-08-05 19:10:59,306 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 124 ms. Found 2 JPA repository interfaces.
-2024-08-05 19:11:00,636 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 7777 (http)
-2024-08-05 19:11:00,660 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-7777"]
+2024-08-05 19:11:00,636 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-08-05 19:11:00,660 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
 2024-08-05 19:11:00,674 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
 2024-08-05 19:11:00,676 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.26]
 2024-08-05 19:11:00,820 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
@@ -408,11 +408,11 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 2024-08-05 19:11:05,470 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 2024-08-05 19:11:06,445 DEBUG o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
 2024-08-05 19:11:06,981 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2024-08-05 19:11:07,014 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-7777"]
-2024-08-05 19:11:07,055 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 7777 (http) with context path '/'
+2024-08-05 19:11:07,014 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-08-05 19:11:07,055 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path '/'
 2024-08-05 19:11:07,083 INFO o.s.b.StartupInfoLogger [restartedMain] Started RealEstateApplication in 11.258 seconds (process running for 12.008)
 2024-08-05 19:11:39,177 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
-2024-08-05 19:11:39,348 INFO o.a.j.l.DirectJDKLog [Thread-5] Stopping ProtocolHandler ["http-nio-7777"]
+2024-08-05 19:11:39,348 INFO o.a.j.l.DirectJDKLog [Thread-5] Stopping ProtocolHandler ["http-nio-8080"]
 2024-08-05 19:11:39,607 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-5] Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-08-05 19:11:39,623 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown initiated...
 2024-08-05 19:11:39,699 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown completed.
@@ -420,8 +420,8 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 2024-08-05 19:11:40,304 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
 2024-08-05 19:11:41,247 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2024-08-05 19:11:41,288 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 38 ms. Found 2 JPA repository interfaces.
-2024-08-05 19:11:42,211 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 7777 (http)
-2024-08-05 19:11:42,227 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-7777"]
+2024-08-05 19:11:42,211 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-08-05 19:11:42,227 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
 2024-08-05 19:11:42,232 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
 2024-08-05 19:11:42,237 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.26]
 2024-08-05 19:11:42,300 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
@@ -439,12 +439,12 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 2024-08-05 19:11:43,398 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 2024-08-05 19:11:43,652 DEBUG o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
 2024-08-05 19:11:44,101 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2024-08-05 19:11:44,134 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-7777"]
-2024-08-05 19:11:44,181 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 7777 (http) with context path '/'
+2024-08-05 19:11:44,134 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-08-05 19:11:44,181 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path '/'
 2024-08-05 19:11:44,208 INFO o.s.b.StartupInfoLogger [restartedMain] Started RealEstateApplication in 4.385 seconds (process running for 49.134)
 2024-08-05 19:11:44,244 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
 2024-08-05 19:12:41,820 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
-2024-08-05 19:12:41,824 INFO o.a.j.l.DirectJDKLog [Thread-7] Stopping ProtocolHandler ["http-nio-7777"]
+2024-08-05 19:12:41,824 INFO o.a.j.l.DirectJDKLog [Thread-7] Stopping ProtocolHandler ["http-nio-8080"]
 2024-08-05 19:12:41,878 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-7] Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-08-05 19:12:41,880 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-2 - Shutdown initiated...
 2024-08-05 19:12:41,893 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-2 - Shutdown completed.
@@ -452,8 +452,8 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 2024-08-05 19:12:42,039 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
 2024-08-05 19:12:42,602 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2024-08-05 19:12:42,659 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 54 ms. Found 2 JPA repository interfaces.
-2024-08-05 19:12:42,891 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 7777 (http)
-2024-08-05 19:12:42,893 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-7777"]
+2024-08-05 19:12:42,891 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-08-05 19:12:42,893 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
 2024-08-05 19:12:42,894 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
 2024-08-05 19:12:42,896 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.26]
 2024-08-05 19:12:42,938 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
@@ -471,8 +471,8 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 2024-08-05 19:12:43,694 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 2024-08-05 19:12:43,919 DEBUG o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
 2024-08-05 19:12:44,158 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2024-08-05 19:12:44,368 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-7777"]
-2024-08-05 19:12:44,419 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 7777 (http) with context path '/'
+2024-08-05 19:12:44,368 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-08-05 19:12:44,419 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path '/'
 2024-08-05 19:12:44,436 INFO o.s.b.StartupInfoLogger [restartedMain] Started RealEstateApplication in 2.48 seconds (process running for 109.362)
 2024-08-05 19:12:44,478 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
 2024-08-05 19:28:01,427 INFO o.s.b.StartupInfoLogger [restartedMain] Starting RealEstateApplication using Java 17.0.10 with PID 12732 (C:\Users\sanje\Downloads\Springboot-SDP\target\classes started by Sanjeev Kl in C:\Users\sanje\Downloads\Springboot-SDP)
@@ -481,8 +481,8 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 2024-08-05 19:28:01,540 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
 2024-08-05 19:28:03,688 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2024-08-05 19:28:03,804 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 111 ms. Found 4 JPA repository interfaces.
-2024-08-05 19:28:05,004 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 7777 (http)
-2024-08-05 19:28:05,024 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-7777"]
+2024-08-05 19:28:05,004 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-08-05 19:28:05,024 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
 2024-08-05 19:28:05,039 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
 2024-08-05 19:28:05,039 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.26]
 2024-08-05 19:28:05,154 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
@@ -501,8 +501,8 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 2024-08-05 19:28:10,482 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 2024-08-05 19:28:11,348 DEBUG o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
 2024-08-05 19:28:12,149 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2024-08-05 19:28:12,184 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-7777"]
-2024-08-05 19:28:12,254 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 7777 (http) with context path '/'
+2024-08-05 19:28:12,184 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-08-05 19:28:12,254 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path '/'
 2024-08-05 19:28:12,283 INFO o.s.b.StartupInfoLogger [restartedMain] Started RealEstateApplication in 11.658 seconds (process running for 12.43)
 2024-08-05 19:49:22,406 INFO o.s.b.StartupInfoLogger [restartedMain] Starting RealEstateApplication using Java 17.0.10 with PID 25100 (C:\Users\sanje\Downloads\Springboot-SDP\target\classes started by Sanjeev Kl in C:\Users\sanje\Downloads\Springboot-SDP)
 2024-08-05 19:49:22,413 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
@@ -510,8 +510,8 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 2024-08-05 19:49:22,557 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
 2024-08-05 19:49:24,302 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2024-08-05 19:49:24,435 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 120 ms. Found 4 JPA repository interfaces.
-2024-08-05 19:49:25,876 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 7777 (http)
-2024-08-05 19:49:25,948 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-7777"]
+2024-08-05 19:49:25,876 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-08-05 19:49:25,948 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
 2024-08-05 19:49:25,962 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
 2024-08-05 19:49:25,967 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.26]
 2024-08-05 19:49:26,084 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
@@ -530,8 +530,8 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 2024-08-05 19:49:30,569 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 2024-08-05 19:49:31,348 DEBUG o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
 2024-08-05 19:49:31,929 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2024-08-05 19:49:31,973 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-7777"]
-2024-08-05 19:49:32,022 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 7777 (http) with context path '/'
+2024-08-05 19:49:31,973 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-08-05 19:49:32,022 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path '/'
 2024-08-05 19:49:32,045 INFO o.s.b.StartupInfoLogger [restartedMain] Started RealEstateApplication in 10.312 seconds (process running for 11.099)
 2024-08-05 20:29:55,305 INFO o.s.b.StartupInfoLogger [restartedMain] Starting RealEstateApplication using Java 17.0.10 with PID 23004 (C:\Users\sanje\Downloads\Springboot-SDP\target\classes started by Sanjeev Kl in C:\Users\sanje\Downloads\Springboot-SDP)
 2024-08-05 20:29:55,328 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
@@ -539,8 +539,8 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 2024-08-05 20:29:55,504 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
 2024-08-05 20:29:58,704 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2024-08-05 20:29:58,919 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 179 ms. Found 4 JPA repository interfaces.
-2024-08-05 20:30:01,764 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 7777 (http)
-2024-08-05 20:30:01,795 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-7777"]
+2024-08-05 20:30:01,764 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-08-05 20:30:01,795 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
 2024-08-05 20:30:01,804 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
 2024-08-05 20:30:01,804 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.26]
 2024-08-05 20:30:02,047 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
@@ -559,8 +559,8 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 2024-08-05 20:30:09,681 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 2024-08-05 20:30:11,571 DEBUG o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
 2024-08-05 20:30:13,836 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2024-08-05 20:30:13,971 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-7777"]
-2024-08-05 20:30:14,052 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 7777 (http) with context path '/'
+2024-08-05 20:30:13,971 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-08-05 20:30:14,052 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path '/'
 2024-08-05 20:30:14,120 INFO o.s.b.StartupInfoLogger [restartedMain] Started RealEstateApplication in 19.906 seconds (process running for 21.119)
 2024-08-05 20:33:53,514 INFO o.s.b.StartupInfoLogger [restartedMain] Starting RealEstateApplication using Java 17.0.10 with PID 9896 (C:\Users\sanje\Downloads\Springboot-SDP\target\classes started by Sanjeev Kl in C:\Users\sanje\Downloads\Springboot-SDP)
 2024-08-05 20:33:53,514 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"

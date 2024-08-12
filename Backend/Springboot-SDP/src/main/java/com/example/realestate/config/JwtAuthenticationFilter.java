@@ -11,25 +11,29 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 
-import com.example.realestate.repo.*;
+import com.example.realestate.repo.JwtRepo;
+import com.example.realestate.utils.JwtToken;
 
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-    private final JwtToken jwtTokenUtil;
+    private final JwtToken JwtTokenutil;
     private final UserDetailsService userDetailsService;
-    private final JwtRepo jwtRepo;
+    private final JwtRepo Jwtrepo;
 
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response,
-            @NonNull FilterChain filterChain) throws ServletException, IOException {
-        final String authHeader = request.getHeader("Authorization");
+            @NonNull FilterChain filterChain)
+            throws ServletException, IOException {
+        final String authHeader = request.getHeader(AUTHORIZATION);
         final String token;
         final String username;
 
@@ -38,12 +42,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             return;
         }
         token = authHeader.substring(7);
-        username = jwtTokenUtil.extractUsername(token);
+        username = JwtTokenutil.extractUsername(token);
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
-            var isTokenValid = jwtRepo.findByToken(token).map(t -> !t.isExpired() && !t.isRevoked()).orElse(false);
+            var isTokenValid = Jwtrepo.findByToken(token).map(t -> !t.isExpired() && !t.isRevoked())
+                    .orElse(false);
 
-            if (jwtTokenUtil.isTokenValid(token, userDetails) && isTokenValid) {
+            if (JwtTokenutil.isTokenValid(token, userDetails) && isTokenValid) {
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));

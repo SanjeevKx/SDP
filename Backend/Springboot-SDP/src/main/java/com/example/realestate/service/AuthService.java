@@ -1,13 +1,8 @@
 package com.example.realestate.service;
 
-import com.example.realestate.auth.LoginRequest;
-import com.example.realestate.auth.RegisterRequest;
-import com.example.realestate.auth.LoginResponse;
-
-import java.util.List;
-import java.util.Optional;
-
-import com.example.realestate.model.User;
+import com.example.realestate.dto.request.LoginRequest;
+import com.example.realestate.dto.request.RegisterRequest;
+import com.example.realestate.dto.response.LoginResponse;
 
 public interface AuthService {
     String register(RegisterRequest registerRequest);
@@ -15,10 +10,4 @@ public interface AuthService {
     LoginResponse login(LoginRequest loginRequest);
 
     String createAdmin();
-
-    List<User> getAllUsers();
-
-    Optional<User> getUserByEmail(String email);
-
-    Optional<User> updateUserByEmail(String email, User updatedUser);
 }

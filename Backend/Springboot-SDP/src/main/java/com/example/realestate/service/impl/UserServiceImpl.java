@@ -3,11 +3,10 @@ package com.example.realestate.service.impl;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.realestate.auth.UserCreateRequest;
-import com.example.realestate.auth.UserUpdateRequest;
-import com.example.realestate.auth.UserResponse;
+import com.example.realestate.dto.request.UserCreateRequest;
+import com.example.realestate.dto.request.UserUpdateRequest;
+import com.example.realestate.dto.response.UserResponse;
 import com.example.realestate.model.User;
-import com.example.realestate.model.User.Role;
 import com.example.realestate.repo.UserRepo;
 import com.example.realestate.service.UserService;
 
@@ -28,10 +27,11 @@ public class UserServiceImpl implements UserService {
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .phone(registerRequest.getPhone())
                 .address(registerRequest.getAddress())
-                .role(Role.valueOf(registerRequest.getRole().name()))
+                .role(registerRequest.getRole())
                 .build();
         return userRepository.save(user);
     }
+
     @Override
     public User updateUser(Long userId, UserUpdateRequest userUpdateRequest) {
         User user = userRepository.findById(userId).orElseThrow();
@@ -67,17 +67,14 @@ public class UserServiceImpl implements UserService {
     }
 
     private UserResponse mapUserToUserResponse(User user) {
-        UserResponse.UserResponseBuilder builder = UserResponse.builder()
+        return UserResponse.builder()
                 .id(user.getUid())
                 .name(user.getName())
                 .email(user.getEmail())
                 .phone(user.getPhone())
-                .address(user.getAddress());
-      
-        UserResponse response = builder.build();
-        response.setRole(user.getRole().toString());  // Assuming setRole accepts a String
-        
-        return response;
+                .address(user.getAddress())
+                .role(user.getRole())
+                .build();
     }
 
 }

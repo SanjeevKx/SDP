@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.realestate.auth.UserCreateRequest;
-import com.example.realestate.auth.UserUpdateRequest;
-import com.example.realestate.auth.UserResponse;
+import com.example.realestate.dto.request.UserCreateRequest;
+import com.example.realestate.dto.request.UserUpdateRequest;
+import com.example.realestate.dto.response.UserResponse;
 import com.example.realestate.model.User;
 import com.example.realestate.service.UserService;
 
@@ -27,7 +27,7 @@ import lombok.RequiredArgsConstructor;
 public class UserController {
     private final UserService userService;
 
-    @PostMapping("/user/add")
+    @PostMapping("/users")
     public ResponseEntity<User> createUser(@RequestBody UserCreateRequest registerRequest) {
         User user = userService.createUser(registerRequest);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
