@@ -1,63 +1,131 @@
 import React, { useState } from 'react';
+import { PlusCircle } from 'lucide-react';
+import axios from 'axios';
+import {
+    Sheet,
+    SheetContent,
+    SheetFooter,
+    SheetTitle,
+} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const Properties = () => {
-    const [activeTab, setActiveTab] = useState('for-sale');
+    const [open, setOpen] = useState(false);
+    const [properties, setProperties] = useState([]);
 
-    const forSaleImages = [
-        { src: 'https://ik.imagekit.io/rqds6dyata/lycs-architecture-kUdbEEMcRwE-un.jpg?updatedAt=1722102898926', alt: 'House 1', details: '3 Beds • 2 Baths • 1500 sqft', price: '₹2,20,00,000' },
-        { src: 'https://ik.imagekit.io/rqds6dyata/vita-vilcina-KtOid0FLjqU-unsplas.jpg?updatedAt=1722102898867', alt: 'House 2', details: '4 Beds • 3 Baths • 2000 sqft', price: '₹3,00,00,000' },
-        { src: 'https://ik.imagekit.io/rqds6dyata/pexels-harrisonhaines-6292341%20(1).jpg?updatedAt=1722102898637', alt: 'House 3', details: '2 Beds • 1 Bath • 1200 sqft', price: '₹1,80,00,000' },
-        { src: 'https://ik.imagekit.io/rqds6dyata/pexels-ahmet-cotur-776571149-190.jpg?updatedAt=1722102898601', alt: 'House 4', details: '5 Beds • 4 Baths • 3000 sqft', price: '₹4,50,00,000' },
-        { src: 'https://ik.imagekit.io/rqds6dyata/home.jpeg?updatedAt=1722087843585', alt: 'House 5', details: '3 Beds • 2 Baths • 1800 sqft', price: '₹2,60,00,000' },
-        { src: 'https://ik.imagekit.io/rqds6dyata/home.jpeg?updatedAt=1722087843585', alt: 'House 6', details: '4 Beds • 3 Baths • 2200 sqft', price: '₹3,10,00,000' },
-        { src: 'https://ik.imagekit.io/rqds6dyata/image%20(9).png?updatedAt=1722086536199', alt: 'House 7', details: '2 Beds • 2 Baths • 1400 sqft', price: '₹2,00,00,000' },
-        { src: 'https://ik.imagekit.io/rqds6dyata/image%20(7).png?updatedAt=1722086451704', alt: 'House 8', details: '3 Beds • 3 Baths • 1600 sqft', price: '₹2,40,00,000' },
-    ];
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-    const forRentImages = [
-        { src: 'https://ik.imagekit.io/rqds6dyata/istockphoto-488120139-612x612.jpg?updatedAt=1722085961645', alt: 'House 9', details: '3 Beds • 2 Baths • 1500 sqft', price: '₹1,50,000/month' },
-        { src: 'https://ik.imagekit.io/rqds6dyata/diamond-manor-projects-500x500.webp?updatedAt=1722085831192', alt: 'House 10', details: '4 Beds • 3 Baths • 2000 sqft', price: '₹2,00,000/month' },
-        { src: 'https://ik.imagekit.io/rqds6dyata/image%20(5).png?updatedAt=1722085653332', alt: 'House 11', details: '2 Beds • 1 Bath • 1200 sqft', price: '₹1,20,000/month' },
-        { src: 'https://ik.imagekit.io/rqds6dyata/image%20(4).png?updatedAt=1722085492146', alt: 'House 12', details: '5 Beds • 4 Baths • 3000 sqft', price: '₹2,50,000/month' },
-        { src: 'https://ik.imagekit.io/rqds6dyata/lycs-architecture-kUdbEEMcRwE-unsplash.jpg?updatedAt=1722084882490', alt: 'House 13', details: '3 Beds • 2 Baths • 1800 sqft', price: '₹1,80,000/month' },
-        { src: 'https://ik.imagekit.io/rqds6dyata/frames-for-your-heart-2d4lAQAlbDA-unsplash.jpg?updatedAt=1721904965981', alt: 'House 14', details: '4 Beds • 3 Baths • 2200 sqft', price: '₹2,20,000/month' },
-        { src: 'https://ik.imagekit.io/rqds6dyata/house-1836070.jpg?updatedAt=1721971607755', alt: 'House 15', details: '2 Beds • 2 Baths • 1400 sqft', price: '₹1,40,000/month' },
-        { src: 'https://ik.imagekit.io/rqds6dyata/image%20(27).png?updatedAt=1722176970875', alt: 'House 16', details: '3 Beds • 3 Baths • 1600 sqft', price: '₹1,60,000/month' },
-    ];
+        const formData = {
+            location: e.target.location.value,
+            ownerName: e.target.ownerName.value,
+            contact: e.target.contact.value,
+            price: e.target.price.value,
+            squareFt: e.target.squareFt.value,
+        };
 
-    const renderImages = (images) => {
-        return images.map((image, index) => (
-            <div key={index} className="border p-2 rounded-lg shadow-md">
-                <img src={image.src} alt={image.alt} className="w-full h-48 object-cover mb-2 rounded-t-lg" />
-                <div className="p-2">
-                    <h3 className="font-bold mb-1">{image.alt}</h3>
-                    <p className="text-gray-400">{image.details}</p>
-                    <p className="text-red-500 font-bold text-sm">{image.price}</p>
+        try {
+            // Send form data to backend to be saved in the database
+            const response = await axios.post('http://localhost:8080/api/properties/add', formData);
+
+            // Extract the saved property data from the response
+            const savedProperty = response.data;
+
+            // Update the state to include the new property, ensuring it displays in the UI
+            setProperties(prevState => [...prevState, savedProperty]);
+
+            alert('Property Added Successfully');
+            setOpen(false); // Close the form after successful submission
+        } catch (error) {
+            console.error('There was an error adding the property!', error);
+            alert('Error adding property. Please try again.');
+        }
+    };
+
+    const renderProperties = (properties) => {
+        return properties.map((property) => (
+            <div key={property.id} style={{
+                border: '1px solid #e5e7eb',
+                padding: '8px',
+                borderRadius: '8px',
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+                maxWidth: '300px',
+                marginBottom: '16px',
+            }}>
+                <div style={{ padding: '8px' }}>
+                    <h3 style={{ fontWeight: 'bold', marginBottom: '4px' }}>{property.location}</h3>
+                    <p style={{ color: '#6b7280' }}>Owner: {property.ownerName}</p>
+                    <p style={{ color: '#6b7280' }}>Contact: {property.contact}</p>
+                    <p style={{ color: '#ef4444', fontWeight: 'bold', fontSize: '14px' }}>Price: {property.price}</p>
+                    <p style={{ color: '#6b7280' }}>Square Ft: {property.squareFt}</p>
                 </div>
             </div>
         ));
     };
 
     return (
-        <div className="p-8">
-            <div className="flex justify-center mb-4">
-                <button 
-                    className={`p-2 ${activeTab === 'for-sale' ? 'text-blue-500 font-bold' : 'text-gray-400'}`}
-                    onClick={() => setActiveTab('for-sale')}
-                >
-                    For Sale
-                </button>
-                <span className="mx-4 text-gray-400">|</span>
-                <button 
-                    className={`p-2 ${activeTab === 'for-rent' ? 'text-blue-500 font-bold' : 'text-gray-400'}`}
-                    onClick={() => setActiveTab('for-rent')}
-                >
-                    For Rent
-                </button>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', padding: '16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '16px' }}>
+                <PlusCircle
+                    onClick={() => setOpen(true)}
+                    style={{ color: '#3b82f6', marginLeft: '16px', cursor: 'pointer' }}
+                    size={24}
+                />
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {activeTab === 'for-sale' ? renderImages(forSaleImages) : renderImages(forRentImages)}
+            <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+                gap: '16px',
+                width: '100%',
+            }}>
+                {renderProperties(properties)}
             </div>
+
+            <Sheet open={open} onOpenChange={setOpen}>
+                <SheetContent style={{ width: '100%', maxWidth: '400px', margin: 'auto' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <SheetTitle>Add Property</SheetTitle>
+                    </div>
+                    <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '16px', paddingTop: '16px' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                            <Label htmlFor="location">Location</Label>
+                            <Input id="location" required />
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                            <Label htmlFor="ownerName">Owner Name</Label>
+                            <Input id="ownerName" required />
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                            <Label htmlFor="contact">Contact</Label>
+                            <Input id="contact" required />
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                            <Label htmlFor="price">Price</Label>
+                            <Input id="price" required />
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                            <Label htmlFor="squareFt">Square Ft</Label>
+                            <Input id="squareFt" required />
+                        </div>
+                        <SheetFooter style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+                            <Button
+                                style={{ width: '50%', backgroundColor: '#f87171', borderColor: '#f87171' }}
+                                onClick={() => setOpen(false)}
+                            >
+                                Cancel
+                            </Button>
+                            <Button
+                                type="submit"
+                                style={{ width: '50%' }}
+                            >
+                                Save changes
+                            </Button>
+                        </SheetFooter>
+                    </form>
+                </SheetContent>
+            </Sheet>
         </div>
     );
 };

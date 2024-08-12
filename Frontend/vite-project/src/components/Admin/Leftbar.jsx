@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom'
 import {
   Home,
   Building,
@@ -14,8 +14,11 @@ import {
   Trello,
 } from 'lucide-react';
 import { Button } from '../ui/button';
+import { authService } from '@/services/api'
+
 
 const Leftbar = () => {
+   const navigate = useNavigate()
   const AdminLinks = [
     {
       title: 'Dashboard',
@@ -64,6 +67,11 @@ const Leftbar = () => {
     },
   ];
 
+  const handleLogout = () => {
+    authService.SignOut()
+    navigate('/login')
+}
+
   return (
     <aside className="sticky top-0 w-64 flex flex-col h-screen shadow-sm shadow-primary">
       <div className="flex items-center h-16 pl-10 mb-4">
@@ -87,7 +95,7 @@ const Leftbar = () => {
       </nav>
       <div className='h-[5%] w-full flex flex-col justify-center items-center'>
         <Button className='p-5  bg-blue-500/5 hover:bg-blue-500/10 font-bold  w-full'>
-          <span className='flex flex-row items-center justify-start h-full w-full gap-3 text-blue-500'>
+          <span className='flex flex-row items-center justify-start h-full w-full gap-3 text-blue-500' onClick={handleLogout}>
             <Power size={20} /> Logout
           </span>
         </Button>

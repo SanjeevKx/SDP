@@ -15,4 +15,8 @@ public class UserResponse {
     private String phone;
     private String address;
     private Role role;
+    public void setRole(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setRole'");
+    }
 }

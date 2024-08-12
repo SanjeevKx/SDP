@@ -2,22 +2,12 @@ package com.example.realestate.controller;
 
 import static org.springframework.http.HttpStatus.OK;
 
-import java.util.List;
-// import java.util.Optional;
-import java.util.Optional;
-
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.realestate.auth.LoginRequest;
 import com.example.realestate.auth.RegisterRequest;
-// import com.example.realestate.model.Property;
+import com.example.realestate.auth.LoginResponse;
 import com.example.realestate.model.User;
 import com.example.realestate.service.AuthService;
 
@@ -25,6 +15,9 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -36,36 +29,31 @@ public class AuthController {
 
     @PostMapping("/register")
     @Operation(summary = "Register a new user", description = "Allows users to register by providing necessary registration details.")
-    public ResponseEntity<?> register(@Parameter(description = "Registration details of the user") @RequestBody RegisterRequest registerRequest) {
+    public ResponseEntity<String> register(@Parameter(description = "Registration details of the user") @RequestBody RegisterRequest registerRequest) {
         return new ResponseEntity<>(authService.register(registerRequest), OK);
     }
 
     @PostMapping("/login")
     @Operation(summary = "Authenticate user", description = "Allows users to authenticate by providing valid login credentials.")
-    public ResponseEntity<?> login(@Parameter(description = "Login credentials of the user") @RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<LoginResponse> login(@Parameter(description = "Login credentials of the user") @RequestBody LoginRequest loginRequest) {
         return new ResponseEntity<>(authService.login(loginRequest), OK);
     }
 
-    @GetMapping
+    @GetMapping("/users")
     @Operation(summary = "Get all users", description = "Fetches a list of all registered users.")
     public ResponseEntity<List<User>> getAllUsers() {
-        List<User> users = authService.getAllUsers();
-        return new ResponseEntity<>(users, OK);
+        return new ResponseEntity<>(authService.getAllUsers(), OK);
     }
 
-    @GetMapping("/get/{email}")
-    @Operation(summary = "Get user by ID", description = "Fetches user details by user ID.")
-    public ResponseEntity<User> getUserByEmail(@PathVariable("email") String email) {
-        return authService.getUserByEmail(email)
-                .map(user -> new ResponseEntity<>(user, OK))
-                .orElseGet(() -> ResponseEntity.status(404).body(null));
+    @GetMapping("/user/{email}")
+    @Operation(summary = "Get user by email", description = "Fetches a user by their email address.")
+    public ResponseEntity<Optional<User>> getUserByEmail(@PathVariable String email) {
+        return new ResponseEntity<>(authService.getUserByEmail(email), OK);
     }
 
-    @PutMapping("/update/{email}")
-    @Operation(summary = "Update user by email", description = "Update user details by user email.")
-    public Optional updateUserByEmail(@PathVariable("email") String email, @RequestBody User updatedUser) {
-    return authService.updateUserByEmail(email, updatedUser);
-           
-}
-   
+    @PutMapping("/user/{email}")
+    @Operation(summary = "Update user by email", description = "Updates the details of a user specified by their email.")
+    public ResponseEntity<Optional<User>> updateUserByEmail(@PathVariable String email, @RequestBody User updatedUser) {
+        return new ResponseEntity<>(authService.updateUserByEmail(email, updatedUser), OK);
+    }
 }

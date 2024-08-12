@@ -1,3 +1,4 @@
+
 package com.example.realestate.model;
 
 import jakarta.persistence.Entity;

@@ -1,7 +1,6 @@
 package com.example.realestate.model;
 
 import com.example.realestate.enums.TokenType;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -20,6 +19,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -27,24 +27,20 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "estate_token")
 public class Token {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)  // Use UUID generation strategy for unique token IDs
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @Column(unique = true, nullable = false)  // Ensure the token value is unique and not null
+    @Column(unique = true)
     private String token;
 
-    @Enumerated(EnumType.STRING)
     @Builder.Default
-    private TokenType tokenType = TokenType.BEARER;  // Default token type is BEARER
-
+    @Enumerated(EnumType.STRING)
+    private TokenType tokenType = TokenType.BEARER;
     private boolean revoked;
-
     private boolean expired;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)  // Token is linked to the User model
-    @JoinColumn(name = "user_uid", nullable = false)
-    @JsonBackReference  // This is the child side of the relationship
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_uid")
     private User user;
 }
